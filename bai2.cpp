@@ -1,35 +1,55 @@
 #include<stdio.h>
+typedef struct{
+	float diem_4;
+	const char*diem_chu;
+}ketquadiem;
+ketquadiem chuyendoidiem(float diem_10){
+	ketquadiem kq;
+	if(diem_10<0||diem_10>10){
+		kq.diem_4=-1.0;
+		kq.diem_chu="ko hop le";
+		return kq;
+	}
+	if(diem_10>=9.0){
+		kq.diem_4=4.0;
+		kq.diem_chu="A+";
+		 } else if (diem_10 >= 7.0) {
+        kq.diem_4 = 3.0;
+        kq.diem_chu = "B+";
+    } else if (diem_10 >= 6.0) {
+        kq.diem_4 = 2.5;
+        kq.diem_chu = "B";
+    } else if (diem_10 >= 5.0) {
+        kq.diem_4 = 2.0;
+        kq.diem_chu = "C";
+    } else if (diem_10 >= 4.0) {
+        kq.diem_4 = 1.5;
+        kq.diem_chu = "D";
+    } else {
+        kq.diem_4 = 1.0;
+        kq.diem_chu = "F";
+    }
 
-int main(){
-char tenkhachhang[100];
-int sodiencu,sodienmoi,soluong;
-long tiendien=0;
-printf("nhap ten khach hang:");scanf("%s",&tenkhachhang);
-printf("nhap so dien cu:");scanf("%d",&sodiencu);
-printf("nhap so dien moi");scanf("%d",&sodienmoi);
-soluong=sodienmoi-sodiencu;
-    if(soluong<=100){
-tiendien=soluong*1418;
+    return kq;
 }
-else if(soluong<=150){
-tiendien=100*1418+(soluong-100)*1622;
-}
-else if(soluong<=200){
-tiendien=100*1418+50*1622+(soluong-150)*2044;
-}
-else if(soluong<=300){
-tiendien=100*1418+50*1622+50*2044+(soluong-200)*2210;
-}
-else if(soluong<=400){
-tiendien=100*1418+50*1622+50*2044+100*2210+(soluong-300)*2361;
-}
-else{tiendien=100*1418+50*1622+50*2044+100*2210+100*2361+(soluong-400)*2420;
-}
-
-    printf("\n--- HOA DON TIEN DIEN ---\n");
-    printf("ten khach hang:%s\n",tenkhachhang);
-    printf("so kwh tieu thu:%d\n",soluong);
-    printf("thanh tien:%ld vnd\n",tiendien);
-
+int main() {
+    float diem_10;
+    ketquadiem ket_qua;
+    printf("--- CHUONG TRINH CHUYEN DOI THANG DIEM ---\n");
+    printf("Nhap diem thang 10 cua sinh vien: ");
+    if (scanf("%f", &diem_10) != 1) {
+        printf("Loi nhap lieu. Vui long nhap mot so thuc.\n");
+        return 1;
+    }
+     printf("\n--- KET QUA ---\n");
+    if (ket_qua.diem_4 == -1.0) {
+        printf("Diem nhap vao khong hop le (phai tu 0 den 10).\n");
+    } else {
+        printf("Diem thang 10: %.2f\n", diem_10);
+        printf("Diem thang 4: %.1f\n", ket_qua.diem_4);
+        printf("Diem chu: %s\n", ket_qua.diem_chu);
+    }
     return 0;
 }
+
+

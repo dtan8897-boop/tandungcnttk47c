@@ -1,28 +1,30 @@
-#include<stdio.h>
-int main(){
-	int thang, nam,ngay;
-	printf("nhap thang: "); scanf("%d",&thang);
-	printf("nhap nam: "); scanf("%d",&nam);
-	if (thang == 1||thang == 3||thang == 5||thang == 7||thang == 8||thang == 10||thang == 12){
-		ngay = 31;
-	} else if(thang == 4||thang == 6||thang == 9||thang == 11){
-		ngay = 30;
-	} else if(thang == 2 ){
-		if ((nam % 4 == 0 && nam % 100 != 0 )| nam % 400 == 0){
-	    ngay = 29;
-	}else {
-		ngay = 28;
-	}
+#include <stdio.h>
+double tinhTienDien(int chiSoTruoc, int chiSoSau) {
+    int soKWh = chiSoSau - chiSoTruoc;
+    double tien = 0;
+
+    if (soKWh <= 100)
+        tien = soKWh * 1418;
+    else if (soKWh <= 150)
+        tien = 100 * 1418 + (soKWh - 100) * 1622;
+    else if (soKWh <= 200)
+        tien = 100 * 1418 + 50 * 1622 + (soKWh - 150) * 2044;
+    else if (soKWh <= 300)
+        tien = 100 * 1418 + 50 * 1622 + 50 * 2044 + (soKWh - 200) * 2210;
+    else if (soKWh <= 400)
+        tien = 100 * 1418 + 50 * 1622 + 50 * 2044 + 100 * 2210 + (soKWh - 300) * 2361;
+    else
+        tien = 100 * 1418 + 50 * 1622 + 50 * 2044 + 100 * 2210 + 100 * 2361 + (soKWh - 400) * 2420;
+
+    return tien;
 }
-	else {
-		ngay = 0;
-	
-}
-	if (ngay == 0){
-		printf("thang ko hop le");
-} else{
-	printf("so ngay trong thang %d nam %d la: %d\n", thang,nam,ngay);
-}
-return 0;
+int main() {
+    int truoc, sau;
+    printf("Nhap chi so thang truoc: ");
+    scanf("%d", &truoc);
+    printf("Nhap chi so thang sau: ");
+    scanf("%d", &sau);
+    printf("Tien dien phai tra: %.0f VND\n", tinhTienDien(truoc, sau));
+    return 0;
 }
 
