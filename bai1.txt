@@ -1,0 +1,20 @@
+#include<stdio.h>
+int main(){
+   char ten_mat_hang[100];
+   float trong_luong;
+   int don_gia, ma_chat_luong, so_luong;
+   printf("nhap ten mat hang vao: ");scanf("%s", &ten_mat_hang);
+   printf("nhap trong luong vao: ");scanf("%f", &trong_luong);
+   printf("nhap don gia: ");scanf("%d", &so_luong);
+   printf("nhap ma chat luong: ");scanf("%d", &ma_chat_luong);
+   printf("nhap so luong: ");scanf("%d", &so_luong);
+   
+   printf("\nTHONGTINMATHANG");
+   printf("\ntenmathang: %s", ten_mat_hang);
+   printf("\ntrongluong: %f", trong_luong);
+   printf("\ndongia: %d", so_luong);
+   printf("\nnhap ma chat luong: %d", ma_chat_luong);
+   printf("\nnhap so luong: %d", so_luong);
+   return 0;
+}
+
