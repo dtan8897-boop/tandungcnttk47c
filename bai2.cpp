@@ -1,31 +1,46 @@
 #include <stdio.h>
-int main() {
-    char tenkhachhang[100];
-    int sodiencu, sodienmoi, soluong;
-    long tiendien = 0;
-    printf("Nhap ten khach hang: ");
-    scanf("%s", tenkhachhang);
-    printf("Nhap so dien cu: ");
-    scanf("%d", &sodiencu);
-    printf("Nhap so dien moi: ");
-    scanf("%d", &sodienmoi);
-    soluong = sodienmoi - sodiencu;
-    if (soluong <= 100) {
-        tiendien = soluong * 1418;
-    } else if (soluong <= 150) {
-        tiendien = 100 * 1418 + (soluong - 100) * 1622;
-    } else if (soluong <= 200) {
-        tiendien = 100 * 1418 + 50 * 1622 + (soluong - 150) * 2044;
-    } else if (soluong <= 300) {
-        tiendien = 100 * 1418 + 50 * 1622 + 50 * 2044 + (soluong - 200) * 2210;
-    } else if (soluong <= 400) {
-        tiendien = 100 * 1418 + 50 * 1622 + 50 * 2044 + 100 * 2210 + (soluong - 300) * 2361;
+
+typedef struct {
+    float diem_4;
+    const char *diem_chu;
+} KetQua;
+
+KetQua chuyenDoiDiem(float diem_10) {
+    KetQua kq;
+    if (diem_10 >= 9.0) {
+        kq.diem_4 = 4.0;
+        kq.diem_chu = "A+";
+    } else if (diem_10 >= 8.0) {
+        kq.diem_4 = 3.5;
+        kq.diem_chu = "A";
+    } else if (diem_10 >= 7.0) {
+        kq.diem_4 = 3.0;
+        kq.diem_chu = "B+";
+    } else if (diem_10 >= 6.0) {
+        kq.diem_4 = 2.5;
+        kq.diem_chu = "B";
+    } else if (diem_10 >= 5.0) {
+        kq.diem_4 = 2.0;
+        kq.diem_chu = "C";
+    } else if (diem_10 >= 4.0) {
+        kq.diem_4 = 1.5;
+        kq.diem_chu = "D";
     } else {
-        tiendien = 100 * 1418 + 50 * 1622 + 50 * 2044 + 100 * 2210 + 100 * 2361 + (soluong - 400) * 2420;
+        kq.diem_4 = 1.0;
+        kq.diem_chu = "F";
     }
-    printf("\n--- HOA DON TIEN DIEN ---\n");
-    printf("Khach hang: %s\n", tenkhachhang);
-    printf("So kWh tieu thu: %d\n", soluong);
-    printf("Thanh tien: %ld VND\n", tiendien);
+    return kq;
+}
+
+int main() {
+    float diem_10;
+    printf("Nhap diem thang 10: ");
+    scanf("%f", &diem_10);
+
+    KetQua kq = chuyenDoiDiem(diem_10);
+
+    printf("Diem thang 4: %.1f\n", kq.diem_4);
+    printf("Diem chu: %s\n", kq.diem_chu);
+
     return 0;
 }
