@@ -8,7 +8,8 @@ typedef struct {
     float dtb;
 } SinhVien;
 
-void nhapds(SinhVien *sv) {
+//nên đặt tên là nhập 1 sv, viết thêm 1 hàm nhập ds sinh viên sử dụng hàm nhập 1 sv
+void nhapds(SinhVien *sv) { 
     getchar();
     printf("Nhap ma sinh vien: ");
     gets(sv->masv);
@@ -82,4 +83,5 @@ int main() {
 
     return 0;
 }
+
 
